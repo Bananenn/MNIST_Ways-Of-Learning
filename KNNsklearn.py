@@ -15,7 +15,6 @@ class myKNNsklearn:
         data = pd.read_csv(PATH).values
         y = np.array(data[:,0])
         self.X = np.array(data[:,1:])
-        self.X = np.where(self.X == 0, 0, 1)
         self.classifier.fit(self.X,y)
         #plt.imshow(self.X[0].reshape(28,28))
         #plt.show()
