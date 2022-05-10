@@ -22,6 +22,7 @@ def main():
     predimg28 = np.zeros((28,28))
 
     def paint(event):
+        """Paints on canvas and makes a replica numpy array"""
         # get x1, y1, x2, y2 co-ordinates
         x1, y1 = (event.x-paintSize), (event.y-paintSize)
         x2, y2 = (event.x+paintSize), (event.y+paintSize)
@@ -32,6 +33,7 @@ def main():
         
     
     def resize():
+        """Resizes the array to '28,28' and avrage input"""
         # Ressize to (28,28)
         toPredict = []
         for i,x in enumerate(range(0,280,10)):
