@@ -16,8 +16,6 @@ class myKNNsklearn:
         y = np.array(data[:,0])
         self.X = np.array(data[:,1:])
         self.classifier.fit(self.X,y)
-        #plt.imshow(self.X[0].reshape(28,28))
-        #plt.show()
 
     def predict(self, Xx):
         n = self.classifier.kneighbors(Xx)
@@ -31,8 +29,6 @@ class myKNNsklearn:
             p.set_title(f"nr: {i}")
             p.axis('off')
         plt.show()
-        #plt.imshow(self.X[n[1][0]].reshape(28,28))
-        #plt.show()
         return self.classifier.predict(Xx)
 
 class mySVC:
@@ -57,6 +53,3 @@ class mySVC:
 
     def predict(self, X):
         return self.clf.predict(X)
-
-#obj = myKNNsklearn()
-#obj.learn()
