@@ -7,14 +7,14 @@ def main():
 
     #svc = mySVC()
     #svc.learn()
-    knn = myKNNsklearn()
+    knn = myKNNsklearn(k=9)
     knn.learn()
 
     # Insperation taken from: Org https://www.codershubb.com/create-the-simple-paint-app-using-python/ For the painting on canvas
     root = Tk()
     root.title("Paint Application")
     root.geometry("280x380")
-    paintSize = 10
+    paintSize = 15
     # create canvas
     wn=Canvas(root, width=280, height=280, bg='white')
     imgrecreation = np.zeros((28,28))
@@ -30,25 +30,14 @@ def main():
         imgrecreation[x1//10][y1//10] = 1
         #make the painted area fatter
         for x,y in [(0,1), (1,0), (1,1), (0,-1), (-1,0), (-1,-1)]:
-            if imgrecreation[(x1//10)+x][(y1//10)+y] == 0:
-                imgrecreation[(x1//10)+x][(y1//10)+y] = 1  
+            if ((y1//10)+y > 0) and ((y1//10)+y < 28):
+                if imgrecreation[(x1//10)+x][(y1//10)+y] == 0:
+                    imgrecreation[(x1//10)+x][(y1//10)+y] = 1  
 
     def receiveToPredict():
         print("Button pressed")
-        #print(imgrecreation.ravel().reshape(1,-1))
-        plt.imshow(imgrecreation.T)
-        plt.show()
         #print("SVC predict: ", svc.predict(imgrecreation.T.ravel().reshape(1,-1)))
         print("knn predict: ", knn.predict(imgrecreation.T.ravel().reshape(1,-1)))
-        temp = imgrecreation.T.ravel()
-        temp = np.where(temp == 0, 0, 1)
-        print("Shape: ", temp.shape)
-        """
-        for i,dig in enumerate(temp):
-            if i%28 == 0:
-                print("")
-            print(dig, end="")
-        """
 
     def clear():
         #Clear both canvas and my own matrix
