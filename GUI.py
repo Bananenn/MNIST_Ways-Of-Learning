@@ -26,6 +26,7 @@ def main():
         color = "black"
         # display the mouse movement inside canvas
         wn.create_oval(x1, y1, x2, y2, fill=color, outline=color)
+        """
         # Paint on my replica that is 10x smaller (there is no way to save canvas so this is good enough)
         imgrecreation[x1//10][y1//10] = 1
         #make the painted area fatter
@@ -33,6 +34,7 @@ def main():
             if ((y1//10)+y > 0) and ((y1//10)+y < 28):
                 if imgrecreation[(x1//10)+x][(y1//10)+y] == 0:
                     imgrecreation[(x1//10)+x][(y1//10)+y] = 1  
+        """
 
     def receiveToPredict():
         print("Button pressed")

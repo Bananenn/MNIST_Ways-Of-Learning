@@ -4,6 +4,7 @@ from sklearn import svm
 from sklearn.neighbors import KNeighborsClassifier
 import matplotlib.pyplot as plt
 
+
 class myKNNsklearn:
     def __init__(self, k=5):
         self.k = k
